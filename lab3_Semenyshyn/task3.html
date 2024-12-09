@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .keyboard-button {
+      width: 40px;
+      height: 40px;
+      margin: 5px;
+      text-align: center;
+      font-size: 18px;
+      cursor: pointer;
+      border: 1px solid #ccc;
+    }
+
+    .keyboard-button:hover {
+      background-color: #eee;
+    }
+  </style>
+</head>
+<body>
+  <h1>Екранна клавіатура</h1>
+
+  <div id="keyboard">
+    <button class="keyboard-button">а</button>
+    <button class="keyboard-button">б</button>
+    <button class="keyboard-button">в</button>
+    <button class="keyboard-button">г</button>
+    <button class="keyboard-button">д</button>
+    <button class="keyboard-button">е</button>
+    <button class="keyboard-button">є</button>
+    <button class="keyboard-button">и</button>
+    <button class="keyboard-button">і</button>
+    <button class="keyboard-button">ї</button>
+  </div>
+
+  <br>
+  <button onclick="clearText()">Очистити поле</button>
+  <button onclick="toggleLayout()">Alt+Shift</button>
+
+  <br><br>
+  <textarea id="textArea" rows="4" cols="50"></textarea>
+
+  <script>
+    const keyboardButtons = document.querySelectorAll('.keyboard-button');
+    const textArea = document.getElementById('textArea');
+    let isUkrainianLayout = true;
+
+    const ukrainianLayout = ['а', 'б', 'в', 'г', 'д', 'е', 'є', 'и', 'і', 'ї'];
+    const englishLayout = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+
+    function toggleLayout() {
+      isUkrainianLayout = !isUkrainianLayout;
+      updateKeyboardLayout();
+    }
+
+    function updateKeyboardLayout() {
+      const layout = isUkrainianLayout ? ukrainianLayout : englishLayout;
+      keyboardButtons.forEach((button, index) => {
+        button.textContent = layout[index];
+      });
+    }
+
+    updateKeyboardLayout();
+
+    keyboardButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        textArea.value += button.textContent;
+      });
+    });
+
+    function clearText() {
+      textArea.value = '';
+    }
+  </script>
+</body>
+</html>

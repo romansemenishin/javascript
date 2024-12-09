@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    #hide_text {
+      width: 200px;
+      height: 100px;
+      background-color: lightgray;
+      border: 1px solid gray;
+      padding: 10px;
+      display: none;
+    }
+
+    #hide_text.clicked {
+      border: 2px solid darkgreen;
+      background-color: lightgreen;
+    }
+
+    #hide_text.double-clicked {
+      border: 1px solid gray;
+      background-color: lightgray;
+    }
+
+    #hide_text:hover {
+      background-color: lightblue;
+      border-color: darkblue;
+    }
+
+    #imageContainer {
+      margin-top: 20px;
+      position: relative;
+    }
+
+    #imageContainer img {
+      display: none;
+      max-width: 100%;
+      max-height: 200px;
+    }
+
+    #imageCaption {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 10px;
+      display: none;
+    }
+  </style>
+  <script type="text/javascript" src="jquery-3.7.1.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $("p#firstParagraph").text("DOM first!");
+      $("p#lastParagraph").text("DOM last!");
+
+      var $text = $('#hide_text');
+      $text.hide();
+
+      $('.button').click(function() {
+        $text.show(200);
+      });
+
+      $('#hide_text').click(function() {
+        $(this).addClass('clicked');
+        alert('Одинарний клік');
+      }).dblclick(function() {
+        $(this).removeClass('clicked').addClass('double-clicked');
+        setTimeout(function() {
+          $text.removeClass('double-clicked');
+        }, 500);
+        alert('Подвійний клік');
+      });
+
+      var $imageContainer = $('#imageContainer');
+      var $image = $imageContainer.find('img');
+      var $imageCaption = $('#imageCaption');
+
+      $imageContainer.hover(
+        function() {
+          $imageCaption.text("Це зображення").fadeIn();
+        },
+        function() {
+          $imageCaption.fadeOut();
+        }
+      );
+
+      $("p#formPrompt").text("Введіть в текстове поле слово 'correct'.");
+
+      $("form").submit(function(event) {
+        event.preventDefault();
+        if ($("input:first").val() == "correct") {
+          $("span#formResult").text("Успішно!").show();
+        } else {
+          $("span#formResult").text("Неправильно!").show().fadeOut(1000);
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <h1>Контент сторінки</h1>
+  <p id="firstParagraph"></p>
+  <p id="lastParagraph"></p>
+  <a href="#" class="button">Натисніть, щоб показати текст</a>
+
+  <div id="hide_text" class="hoverable">Демонстраційний прихований текст</div>
+
+  <button id="showImage">Показати зображення</button>
+
+  <div id="imageContainer">
+    <img src="image.jpg" alt="Зображення">
+    <div id="imageCaption"></div>
+  </div>
+
+  <p id="formPrompt">Введіть в текстове поле слово 'correct'.</p>
+  <form>
+    <div>
+      <input type="text" />
+      <input type="submit" />
+    </div>
+  </form>
+  <span id="formResult"></span>
+</body>
+</html>

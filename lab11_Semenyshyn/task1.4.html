@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <script src="jquery-3.7.1.min.js"></script>
+</head>
+<body>
+
+<div id="елемент" title="Початковий заголовок">Текст елементу</div>
+
+<script>
+  $(document).ready(function(){
+  
+    var початковийЗаголовок = $("#елемент").attr("title");
+    alert("Початковий заголовок: " + початковийЗаголовок);
+
+    $("#елемент").attr("title", "Новий заголовок");
+
+    $("#елемент").attr({
+      "style": "color: blue; font-size: 18px;",
+      "data-custom": "Додаткові дані"
+    });
+
+    $("#елемент").attr("data-number", function(i, oldValue){
+      return parseInt(oldValue) + 1;
+    });
+
+    $("#елемент").removeAttr("style");
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<div>
+    <h3>Завдання 2.1. Виведення поточної дати, дня тижня і часу</h3>
+    <button onclick="displayCurrentDateTime()">Виконати</button>
+    <p id="currentDateTime"></p>
+</div>
+
+<script>
+    // Функція виведення поточної дати, дня тижня і часу
+    function displayCurrentDateTime() {
+        const currentDate = new Date();
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
+        const formattedDate = currentDate.toLocaleDateString('uk-UA', options);
+
+        document.getElementById('currentDateTime').innerText = `Дата: ${formattedDate} \nДень тижня: ${getDayOfWeek(currentDate)} \nЧас: ${formatTime(currentDate.getHours())}:${formatTime(currentDate.getMinutes())}`;
+    }
+
+    // Функція отримання назви дня тижня
+    function getDayOfWeek(date) {
+        const daysOfWeek = ['неділя', 'понеділок', 'вівторок', 'середа', 'четвер', 'пʼятниця', 'субота'];
+        return daysOfWeek[date.getDay()];
+    }
+
+    // Функція форматування часу (додавання нулів)
+    function formatTime(value) {
+        return value < 10 ? `0${value}` : value;
+    }
+</script>
+
+</body>
+</html>

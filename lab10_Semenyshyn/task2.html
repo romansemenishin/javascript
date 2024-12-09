@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="jquery-3.7.1.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      var $text = $('#hide_text');
+      $text.hide();
+      $('.button').click(function() {
+        $text.show(200);
+      });
+
+      $("p:first").text("DOM first!");
+      $("p:last").text("DOM last!");
+
+      $('div').hover(function() {
+        $(this).addClass('hovered');
+      }, function() {
+        $(this).removeClass('hovered');
+      });
+    });
+  </script>
+  <style>
+    .hovered {
+      background-color: lightblue;
+    }
+  </style>
+</head>
+<body>
+  <h1>Контент сторінки</h1>
+  <p></p>
+  <a href="#" class="button">Натисніть, щоб показати текст</a>
+  <div id="hide_text">Демонстраційний прихований текст</div>
+  <p></p>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<div>
+    <h3>Завдання 2.4. Визначення останнього дня місяця</h3>
+    <label for="yearInput">Рік:</label>
+    <input type="number" id="yearInput" placeholder="Введіть рік">
+    <label for="monthInput">Місяць:</label>
+    <input type="number" id="monthInput" placeholder="Введіть номер місяця">
+    <button onclick="findLastDayOfMonth()">Знайти останній день місяця</button>
+    <p id="lastDayResult"></p>
+</div>
+
+<script>
+    // Функція визначення останнього дня місяця за заданим роком та номером місяця
+    function findLastDayOfMonth() {
+        const yearInput = document.getElementById('yearInput');
+        const monthInput = document.getElementById('monthInput');
+
+        const year = parseInt(yearInput.value, 10);
+        const month = parseInt(monthInput.value, 10);
+
+        if (isNaN(year) || isNaN(month) || month < 1 || month > 12) {
+            document.getElementById('lastDayResult').innerText = 'Введіть коректні значення для року та місяця.';
+            return;
+        }
+
+        const lastDay = new Date(year, month, 0).getDate();
+        document.getElementById('lastDayResult').innerText = `Останній день місяця: ${lastDay}`;
+    }
+</script>
+
+</body>
+</html>

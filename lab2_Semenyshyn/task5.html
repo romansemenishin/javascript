@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Console Log Input</title>
+</head>
+<body>
+
+    <form id="consoleForm">
+        <label for="consoleInput">Введіть текст для виводу у консоль:</label>
+        <input type="text" id="consoleInput" name="consoleInput">
+        <button type="button" onclick="logToConsole()">Вивести у консоль</button>
+    </form>
+
+    <script>
+        console.info("Це інформаційне повідомлення.");
+        console.warn("Це повідомлення попередження.");
+        console.error("Це повідомлення про помилку.");
+
+        let person = { name: "John", age: 22 };
+        console.dir(person);
+
+        console.dirxml(person);
+
+        console.time("timer");
+        for (let i = 0; i < 1000000; i++) {
+        }
+        console.timeEnd("timer");
+
+        console.profile("profile-demo");
+        for (let i = 0; i < 1000000; i++) {
+        }
+        console.profileEnd("profile-demo");
+
+        console.assert(1 === 1, "1 рівне 1");
+        console.assert(1 === 2, "1 рівне 2");
+
+        function logToConsole() {
+
+            var inputText = document.getElementById("consoleInput").value;
+
+            console.log("Введений текст:", inputText);
+        }
+    </script>
+
+</body>
+</html>

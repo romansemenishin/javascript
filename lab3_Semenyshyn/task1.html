@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+  <h1>Розрахунок площі плоских фігур</h1>
+  
+  <label for="shapeSelect">Оберіть фігуру:</label>
+  <select id="shapeSelect" onchange="updateInputs()">
+    <option value="rectangle">Прямокутник</option>
+    <option value="triangle">Трикутник</option>
+    <option value="circle">Коло</option>
+  </select>
+  
+  <div id="inputsContainer">
+    <label for="firstInput" id="firstLabel">Довжина:</label>
+    <input type="text" id="firstInput" />
+  
+    <label for="secondInput" id="secondLabel">Ширина:</label>
+    <input type="text" id="secondInput" />
+  </div>
+  
+  <button onclick="calculateArea()">Розрахувати</button>
+  
+  <p>Площа: <span id="areaResult"></span></p>
+  
+  <script>
+    function updateInputs() {
+      const shape = document.getElementById('shapeSelect').value;
+      const firstLabel = document.getElementById('firstLabel');
+      const secondLabel = document.getElementById('secondLabel');
+      const secondInput = document.getElementById('secondInput');
+      
+      if (shape === 'rectangle') {
+        firstLabel.textContent = 'Довжина:';
+        secondLabel.textContent = 'Ширина:';
+        secondInput.style.display = 'inline';
+        secondLabel.style.display = 'inline';
+      } else if (shape === 'triangle') {
+        firstLabel.textContent = 'Основа:';
+        secondLabel.textContent = 'Висота:';
+        secondInput.style.display = 'inline';
+        secondLabel.style.display = 'inline';
+      } else if (shape === 'circle') {
+        firstLabel.textContent = 'Радіус:';
+        secondInput.style.display = 'none';
+        secondLabel.style.display = 'none';
+      }
+    }
+    
+    function calculateArea() {
+      const shape = document.getElementById('shapeSelect').value;
+      const firstValue = parseFloat(document.getElementById('firstInput').value);
+      const secondValue = parseFloat(document.getElementById('secondInput').value);
+      
+      let area;
+      
+      if (shape === 'rectangle') {
+        if (isNaN(firstValue) || isNaN(secondValue)) {
+          alert('Будь ласка, введіть числа для довжини та ширини.');
+          return;
+        }
+        area = firstValue * secondValue;
+      } else if (shape === 'triangle') {
+        if (isNaN(firstValue) || isNaN(secondValue)) {
+          alert('Будь ласка, введіть числа для основи та висоти.');
+          return;
+        }
+        area = 0.5 * firstValue * secondValue;
+      } else if (shape === 'circle') {
+        if (isNaN(firstValue)) {
+          alert('Будь ласка, введіть число для радіуса.');
+          return;
+        }
+        area = Math.PI * Math.pow(firstValue, 2);
+      }
+      
+      document.getElementById('areaResult').textContent = area.toFixed(2);
+    }
+  </script>
+</body>
+</html>

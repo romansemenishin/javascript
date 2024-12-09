@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="jquery-3.7.1.min.js"></script>
+  <style>
+    .modify {
+      color: blue;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Елементи з класом "modify":</h2>
+<ul>
+  <li class="modify">Елемент 1</li>
+  <li>Елемент 2</li>
+  <li class="modify">Елемент 3</li>
+  <li>Елемент 4</li>
+  <li class="modify">Елемент 5</li>
+</ul>
+
+<h2>Кожен третій елемент <code>&lt;li&gt;</code>:</h2>
+<ul>
+  <li>Елемент 1</li>
+  <li>Елемент 2</li>
+  <li>Елемент 3</li>
+  <li>Елемент 4</li>
+  <li>Елемент 5</li>
+  <li>Елемент 6</li>
+</ul>
+
+<button id="modifyClassBtn">Змінити стилі для класу "modify"</button>
+<button id="modifyThirdLiBtn">Змінити стилі для кожного третього елементу <code>&lt;li&gt;</code></button>
+
+<script>
+  $(document).ready(function(){
+    // Функція для зміни стилів та додавання тексту "modify"
+    function modifyElements(elements) {
+      elements.addClass("modify").text("modify");
+    }
+
+    // Зміна стилів для всіх елементів з класом "modify"
+    $("#modifyClassBtn").click(function(){
+      var elementsWithClass = $("ul li").filter(".modify");
+      modifyElements(elementsWithClass);
+    });
+
+    // Зміна стилів для кожного третього елементу <li>
+    $("#modifyThirdLiBtn").click(function(){
+      var thirdLiElements = $("ul li:nth-child(3n)");
+      modifyElements(thirdLiElements);
+    });
+  });
+</script>
+
+</body>
+</html>

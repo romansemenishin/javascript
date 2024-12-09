@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="6.css">
+  <title>Лабораторна робота 6</title>
+</head>
+<body>
+  <form id="registrationForm">
+    <label for="email">Електронна пошта:</label>
+    <input type="text" id="email" name="email" required>
+    <span id="emailValidation" class="validation-message"></span><br>
+
+    <label for="name">Ім'я:</label>
+    <input type="text" id="name" name="name" required>
+    <span id="nameValidation" class="validation-message"></span><br>
+
+    <label for="login">Логін:</label>
+    <input type="text" id="login" name="login" required>
+    <span id="loginValidation" class="validation-message"></span><br>
+
+    <label for="password">Пароль:</label>
+    <input type="password" id="password" name="password" required>
+    <span id="passwordValidation" class="validation-message"></span><br>
+
+    <label for="postalCode">Поштовий індекс:</label>
+    <input type="text" id="postalCode" name="postalCode" required>
+    <span id="postalCodeValidation" class="validation-message"></span><br>
+
+    <input type="submit" value="Відправити">
+  </form>
+
+  <script>
+    document.getElementById('registrationForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  function validateEmail(email) {
+    const emailRegex = /^[\w-]+(\.[\w-]+)*@pnu\.edu\.ua$/;
+    return emailRegex.test(email);
+  }
+
+  function validateName(name) {
+    const nameRegex = /^[A-Za-zА-Яа-я][a-zа-я]* [A-ZА-Я][A-ZА-Я]*$/;
+    return nameRegex.test(name);
+  }
+
+  function validateLogin(login) {
+    const loginRegex = /^[a-zA-Z]+$/;
+    return loginRegex.test(login);
+  }
+
+  function validatePassword(password) {
+    const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[-_!@#$%^&*]).{8,}$/;
+    return passwordRegex.test(password);
+  }
+
+  function validatePostalCode(postalCode) {
+    const postalCodeRegex = /^\d{5}$/;
+    return postalCodeRegex.test(postalCode);
+  }
+
+  const emailField = document.getElementById('email');
+  const nameField = document.getElementById('name');
+  const loginField = document.getElementById('login');
+  const passwordField = document.getElementById('password');
+  const postalCodeField = document.getElementById('postalCode');
+
+  const emailValidationMessage = document.getElementById('emailValidation');
+  const nameValidationMessage = document.getElementById('nameValidation');
+  const loginValidationMessage = document.getElementById('loginValidation');
+  const passwordValidationMessage = document.getElementById('passwordValidation');
+  const postalCodeValidationMessage = document.getElementById('postalCodeValidation');
+
+  emailValidationMessage.textContent = validateEmail(emailField.value) ? '✅' : 'Електронна пошта повинна мати формат example@pnu.edu.ua';
+  emailField.classList.toggle('invalid', !validateEmail(emailField.value));
+
+  nameValidationMessage.textContent = validateName(nameField.value) ? '✅' : ' У першому слові перша літера велика, наступні маленькі, у другому слові всі букви великі, дозволено кирилиця і латина; ';
+  nameField.classList.toggle('invalid', !validateName(nameField.value));
+
+  loginValidationMessage.textContent = validateLogin(loginField.value) ? '✅' : 'Логін повинен містити тільки латинські літери';
+  loginField.classList.toggle('invalid', !validateLogin(loginField.value));
+
+  passwordValidationMessage.textContent = validatePassword(passwordField.value) ? '✅' : 'Пароль повинен містити мінімум 8 символів, букву, цифру та спецсимвол';
+  passwordField.classList.toggle('invalid', !validatePassword(passwordField.value));
+
+  postalCodeValidationMessage.textContent = validatePostalCode(postalCodeField.value) ? '✅' : 'Поштовий індекс повинен складатися з 5 цифр';
+  postalCodeField.classList.toggle('invalid', !validatePostalCode(postalCodeField.value));
+});
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<html> 
+<head>  
+  <script type="text/javascript" src="jquery-3.7.1.min.js"></script> 
+  <script> 
+    $(document).ready(function() { 
+      var $text = $('#hide_text'); // Assigns the variable $text to the block with id = hide_text 
+      $text.hide(); // Hides the obtained block 
+      
+      $('.button').click(function() { // Use 'click' instead of 'Click'
+        $text.show(200); // Shows the hidden block with a delay of 200 milliseconds
+      });
+    }); 
+  </script> 
+</head>  
+<body>  
+  <h1>Контент сторінки</h1> 
+  <a href="#" class="button">Натисніть, щоб показати текст</a> 
+  <div id="hide_text">Демонстраційний прихований текст</div>
+</body>  
+</html>
+
+
+
+

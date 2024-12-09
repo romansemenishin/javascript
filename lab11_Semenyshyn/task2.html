@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="jquery-3.7.1.min.js"></script>
+  <style>
+    .обгортка {
+      border: 2px solid red;
+      padding: 10px;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="елемент1" style="border: 1px solid black; padding: 5px; margin: 5px;">Текст елементу 1</div>
+<div id="елемент2" style="border: 1px solid black; padding: 5px; margin: 5px;">Текст елементу 2</div>
+
+<script>
+  $(document).ready(function(){
+    // .wrap() - обгортка елементу новим елементом
+    $("#елемент1").wrap("<div class='обгортка'></div>");
+
+    // .replaceAll() - заміна одного елементу іншим
+    $("<div class='заміна'>Новий елемент</div>").replaceAll("#елемент2");
+
+    // .innerHeight(функція) - встановлення внутрішньої висоти елементу за допомогою функції
+    var новаВисота = 150;
+    $("#елемент1").innerHeight(function(i, величина){
+      return величина + новаВисота;
+    });
+
+    // .outerHeight() - отримання повної висоти елементу (включаючи падіння та рамку)
+    var повнаВисота = $("#елемент1").outerHeight();
+    alert("Повна висота елементу 1: " + повнаВисота);
+  });
+</script>
+
+</body>
+</html>

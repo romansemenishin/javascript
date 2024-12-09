@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        input, button {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>JavaScript Калькулятор</h1>
+    <input type="text" id="output" readonly>
+    <br>
+    <button onclick="appendToOutput('7')">7</button>
+    <button onclick="appendToOutput('8')">8</button>
+    <button onclick="appendToOutput('9')">9</button>
+    <button onclick="appendToOutput('+')">+</button>
+    <br>
+    <button onclick="appendToOutput('4')">4</button>
+    <button onclick="appendToOutput('5')">5</button>
+    <button onclick="appendToOutput('6')">6</button>
+    <button onclick="appendToOutput('-')">-</button>
+    <br>
+    <button onclick="appendToOutput('1')">1</button>
+    <button onclick="appendToOutput('2')">2</button>
+    <button onclick="appendToOutput('3')">3</button>
+    <button onclick="appendToOutput('*')">*</button>
+    <br>
+    <button onclick="appendToOutput('0')">0</button>
+    <button onclick="appendToOutput('.')">.</button>
+    <button onclick="calculateResult()">=</button>
+    <button onclick="appendToOutput('/')">/</button>
+    <br>
+    <button onclick="clearOutput()">C</button>
+
+    <script>
+        function appendToOutput(value) {
+            const output = document.getElementById("output");
+            output.value += value;
+        }
+
+        function calculateResult() {
+            const output = document.getElementById("output");
+            try {
+                output.value = eval(output.value);
+            } catch (error) {
+                output.value = "Помилка";
+            }
+        }
+
+        function clearOutput() {
+            const output = document.getElementById("output");
+            output.value = "";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<div>
+    <h3>Час</h3>
+    <p id="currentTime"></p>
+    <label for="seconds">Секунди:</label>
+    <input type="number" id="seconds" placeholder="Введіть секунди">
+    <button onclick="changeSeconds()">Змінити за секундами</button>
+    <br>
+    <label for="minutes">Хвилини:</label>
+    <input type="number" id="minutes" placeholder="Введіть хвилини">
+    <button onclick="changeMinutes()">Змінити за хвилинами</button>
+    <br>
+    <label for="hours">Години:</label>
+    <input type="number" id="hours" placeholder="Введіть години">
+    <button onclick="changeHours()">Змінити за годинами</button>
+</div>
+
+<script>
+    // Об'єкт, що описує час
+    let time = {
+        hours: 0,
+        minutes: 0,
+        seconds: 0
+    };
+
+    // Функція виведення часу на екран
+    function displayTime() {
+        document.getElementById('currentTime').innerText = `${formatTime(time.hours)}:${formatTime(time.minutes)}:${formatTime(time.seconds)}`;
+    }
+
+    // Функція зміни часу на передану кількість секунд
+    function changeSeconds() {
+        const secondsInput = document.getElementById('seconds');
+        const seconds = parseInt(secondsInput.value, 10) || 0;
+        time.seconds += seconds;
+        adjustTime();
+        displayTime();
+        secondsInput.value = '';
+    }
+
+    // Функція зміни часу на передану кількість хвилин
+    function changeMinutes() {
+        const minutesInput = document.getElementById('minutes');
+        const minutes = parseInt(minutesInput.value, 10) || 0;
+        time.minutes += minutes;
+        adjustTime();
+        displayTime();
+        minutesInput.value = '';
+    }
+
+    // Функція зміни часу на передану кількість годин
+    function changeHours() {
+        const hoursInput = document.getElementById('hours');
+        const hours = parseInt(hoursInput.value, 10) || 0;
+        time.hours += hours;
+        adjustTime();
+        displayTime();
+        hoursInput.value = '';
+    }
+
+    // Функція форматування часу (додавання нулів)
+    function formatTime(value) {
+        return value < 10 ? `0${value}` : value;
+    }
+
+    // Функція коригування часу, щоб врахувати переповнення
+    function adjustTime() {
+        if (time.seconds >= 60) {
+            time.minutes += Math.floor(time.seconds / 60);
+            time.seconds %= 60;
+        }
+        if (time.minutes >= 60) {
+            time.hours += Math.floor(time.minutes / 60);
+            time.minutes %= 60;
+        }
+    }
+
+    // Виведення початкового часу
+    displayTime();
+</script>
+
+</body>
+</html>

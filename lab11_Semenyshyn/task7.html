@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Демонстрація методів jQuery</title>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <style>
+    #demoElement {
+      width: 200px;
+      height: 200px;
+      background-color: lightblue;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<script>
+  $(document).ready(function(){
+    var $demoElement = $('#demoElement');
+
+    // Метод .fadeIn()
+    $demoElement.fadeIn(1000, function() {
+      // Функція, яка викличеться після виконання fadeIn()
+      // Метод .delay()
+      $(this).delay(1000)
+             // Метод .fadeOut()
+             .fadeOut(1000);
+    });
+  });
+</script>
+
+<div id="demoElement">Цей елемент буде з'являтися та зникає через анімацію</div>
+
+</body>
+</html>

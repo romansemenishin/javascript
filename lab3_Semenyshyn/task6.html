@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    ul {
+      list-style: none;
+    }
+
+    .collapsed {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Овочі && фрукти</h1>
+  
+  <ul id="tree">
+    <li>
+      <span class="toggle" onclick="toggleBranch(this)">fruits</span>
+      <ul>
+        <li>apple</li>
+        <li>pineapple</li>
+        <li>apricot</li>
+        <li>pear</li>
+        <li>lemon</li>
+      </ul>
+    </li>
+    <li>
+      <span class="toggle" onclick="toggleBranch(this)">vegetables</span>
+      <ul>
+        <li>potatoes</li>
+        <li>beetroot</li>
+        <li>carrots</li>
+        <li>pear</li>
+      </ul>
+    </li>
+  </ul>
+
+  <script>
+    function toggleBranch(element) {
+      const ul = element.nextElementSibling;
+      ul.classList.toggle('collapsed');
+    }
+  </script>
+</body>
+</html>

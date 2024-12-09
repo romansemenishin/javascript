@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="jquery-3.7.1.min (1).js"></script>
+  <style>
+    body {
+      text-align: center;
+    }
+
+    .animated-container {
+      margin: 20px;
+    }
+
+    .animated-element {
+      width: 100px;
+      height: 100px;
+      margin: 20px;
+      display: inline-block;
+      border-radius: 50%;
+    }
+
+    #element1 { background-color: rgb(255, 174, 0); }
+    #element2 { background-color: rgb(0, 123, 255); }
+    #element3 { background-color: rgb(0, 128, 90); }
+  </style>
+</head>
+<body>
+
+<div class="animated-container">
+  <div id="element1" class="animated-element"></div>
+  <div id="element2" class="animated-element"></div>
+  <div id="element3" class="animated-element"></div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    $('#element1').fadeIn(2000, function () {
+      $(this).fadeOut(2000);
+    });
+
+    $('#element2').slideToggle(2000);
+
+    $('#element3').hide(2000, function () {
+      $(this).show(2000);
+    });
+  });
+</script>
+
+</body>
+</html>

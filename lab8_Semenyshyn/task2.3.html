@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<div>
+    <h3>Завдання 2.3. Знаходження дати</h3>
+    <label for="daysInput">Введіть кількість днів:</label>
+    <input type="number" id="daysInput" placeholder="Введіть N">
+    <button onclick="findDate()">Знайти дату</button>
+    <p id="result"></p>
+</div>
+
+<script>
+    // Функція знаходження дати N днів назад чи вперед
+    function findDate() {
+        const daysInput = document.getElementById('daysInput');
+        const nDays = parseInt(daysInput.value, 10) || 0;
+
+        const currentDate = new Date();
+        const resultDate = new Date(currentDate);
+        resultDate.setDate(currentDate.getDate() + nDays);
+
+        let resultMessage;
+        if (nDays < 0) {
+            resultMessage = `Минула дата: ${getUkrainianDate(resultDate)}`;
+        } else if (nDays > 0) {
+            resultMessage = `Майбутня дата: ${getUkrainianDate(resultDate)}`;
+        } else {
+            resultMessage = 'Введіть непусте значення для N';
+        }
+
+        document.getElementById('result').innerText = resultMessage;
+    }
+
+    // Функція отримання української дати
+    function getUkrainianDate(date) {
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        return date.toLocaleDateString('uk-UA', options);
+    }
+</script>
+
+</body>
+</html>

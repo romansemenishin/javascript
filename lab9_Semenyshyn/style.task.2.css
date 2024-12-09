@@ -1,0 +1,105 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .logo-container {
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .logo {
+    width: 100px;
+    height: 100px;
+    background-color: #3498db;
+    border-radius: 50%;
+    position: absolute;
+    animation: logoAnimation 2s ease infinite, scaleLogo 2s ease infinite, colorChange 2s ease infinite;
+  }
+  
+  .text {
+    position: absolute;
+    top: 120px;
+    text-align: center;
+    width: 200px;
+    opacity: 0;
+    animation: textAnimation 2s ease infinite, textAppear 2s ease infinite;
+  }
+  
+  .new-object {
+    width: 20px;
+    height: 20px;
+    background-color: #2ecc71;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    animation: newObjectAnimation 2s ease infinite;
+  }
+  
+  @keyframes logoAnimation {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+  
+  @keyframes scaleLogo {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+  }
+  
+  @keyframes colorChange {
+    0%, 100% {
+      background-color: #3498db;
+    }
+    50% {
+      background-color: #e74c3c;
+    }
+  }
+  
+  @keyframes textAnimation {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    50% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+  }
+  
+  @keyframes textAppear {
+    0% {
+      opacity: 0;
+    }
+    50%, 100% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes newObjectAnimation {
+    0%, 100% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: translate(-50%, -50%) scale(1.5);
+      opacity: 0;
+    }
+  }
+  

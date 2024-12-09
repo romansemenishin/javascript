@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+</head>
+<body onload="clock()">
+<form name="clock">
+Година:
+<input type="text" name="hour" size="4" value=""><br>
+Хвилина:
+<input type="text" name="minute" size="2" value=""><br>
+Секунда:
+<input type="text" name="second" size="2" value=""><br>
+Рік:
+<input type="text" name="year" size="2" value=""><br>
+Місяць:
+<input type="text" name="month" size="2" value=""><br>
+День:
+<input type="text" name="day" size="2" value="">
+</form>
+<script language="javascript">
+function clock() {
+    let now = new Date();
+    let hour = String(now.getHours()).padStart(2, '0');
+    let minute = String(now.getMinutes()).padStart(2, '0');
+    let second = String(now.getSeconds()).padStart(2, '0');
+    let year = now.getFullYear();
+    let month = String(now.getMonth() + 1).padStart(2, '0');
+    let day = String(now.getDate()).padStart(2, '0');
+
+    document.clock.hour.value = hour;
+    document.clock.minute.value = minute;
+    document.clock.second.value = second;
+    document.clock.year.value = year;
+    document.clock.month.value = month;
+    document.clock.day.value = day;
+
+    setTimeout(clock, 1000);
+}
+</script>
+</body>
+</html>
+

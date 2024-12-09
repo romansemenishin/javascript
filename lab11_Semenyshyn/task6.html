@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Анімація з методом .animate()</title>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <style>
+    #animatedDiv {
+      width: 100px;
+      height: 100px;
+      background-color: blue;
+      margin: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<script>
+  $(document).ready(function(){
+    var властивості = {
+      width: '200px',
+      height: '200px',
+      backgroundColor: 'red'
+    };
+
+    var тривалість = 1000;
+    var easing = 'linear';
+
+    var onComplete = function() {
+      alert('Анімація завершена!');
+    };
+
+    var опції = {
+      queue: false,
+      step: function (now, fx) {
+        console.log(fx.prop, now);
+      }
+    };
+
+    $('#animatedDiv').animate(властивості, тривалість, easing, onComplete, опції);
+  });
+</script>
+
+<div id="animatedDiv"></div>
+
+</body>
+</html>

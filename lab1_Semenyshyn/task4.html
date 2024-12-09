@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+    function calculateF() {
+    let x = parseFloat(document.getElementById("input_x").value);
+    let y = parseFloat(document.getElementById("input_y").value);
+    let result = 0;
+
+    if (x * y === -100) {
+                F = (2 * x) / y;
+            } else if (x * y !== 20) {
+                F = Math.pow(x, 3) - 2 * x * y;
+            } else {
+                F = Math.pow(x, 2) + 4;
+            }
+
+            
+            document.getElementById("output").innerHTML = "Результат: " + result;
+        }
+    </script>
+</head>
+<body>
+    <form>
+    <label for="input_x">Введіть значення x:</label>
+    <input type="text" id="input_x" value="0"><br>
+
+    <label for="input_y">Введіть значення y:</label>
+    <input type="text" id="input_y" value="0"><br>
+
+    <input type="button" value="Розрахувати" onClick="calculateF()">
+    </form>
+    <p id="output">F =</p>
+</body>
+</html>
+

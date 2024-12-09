@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+  <h1>Перевірка знань таблиці множення</h1>
+  
+  <p id="score">Загальний рахунок: 0%</p>
+  <button onclick="generateTask()">Наступне завдання</button>
+  
+  <p id="task"></p>
+  <input type="text" id="answer" placeholder="Введіть відповідь">
+  <button onclick="checkAnswer()">Перевірити</button>
+  
+  <p id="result"></p>
+  
+  <script>
+    let score = 0;
+    let tasksCompleted = 0;
+    
+    function generateTask() {
+      if (tasksCompleted >= 10) {
+        alert('Ви вже виконали всі завдання!');
+        return;
+      }
+      
+      const num1 = Math.floor(Math.random() * 10);
+      const num2 = Math.floor(Math.random() * 10);
+      const correctAnswer = num1 * num2;
+      
+      const taskText = `${num1} × ${num2} = `;
+      document.getElementById('task').textContent = taskText;
+      document.getElementById('answer').value = '';
+      document.getElementById('result').textContent = '';
+    }
+    
+    function checkAnswer() {
+      const userAnswer = parseInt(document.getElementById('answer').value);
+      const taskText = document.getElementById('task').textContent;
+      
+      if (isNaN(userAnswer)) {
+        document.getElementById('result').textContent = 'Введіть коректне число.';
+      } else {
+        const numbers = taskText.match(/\d+/g);
+        const num1 = parseInt(numbers[0]);
+        const num2 = parseInt(numbers[1]);
+        const correctAnswer = num1 * num2;
+        
+        if (userAnswer === correctAnswer) {
+          score++;
+          document.getElementById('result').textContent = 'Правильно!';
+        } else {
+          document.getElementById('result').textContent = `Помилка, правильна відповідь «${correctAnswer}»`;
+        }
+        
+        tasksCompleted++;
+        const percentage = (score / 10) * 100;
+        document.getElementById('score').textContent = `Загальний рахунок: ${percentage}% (${score} правильних відповідей з 10)`;
+      }
+    }
+  </script>
+</body>
+</html>
+

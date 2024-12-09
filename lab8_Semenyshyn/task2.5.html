@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<div>
+    <h3>Завдання 2.5. Кількість секунд до/від початку дня</h3>
+    <button onclick="calculateSeconds()">Обчислити</button>
+    <p id="result"></p>
+</div>
+
+<script>
+    // Функція для обчислення кількості секунд до/від початку дня
+    function calculateSeconds() {
+        const now = new Date();
+        const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+        const secondsPassed = Math.floor((now - startOfDay) / 1000);
+        const secondsUntilNextDay = Math.floor((startOfDay.getTime() + 24 * 60 * 60 * 1000 - now) / 1000);
+
+        const resultObject = {
+            secondsPassed: secondsPassed,
+            secondsUntilNextDay: secondsUntilNextDay
+        };
+
+        document.getElementById('result').innerText = `Кількість секунд, що пройшла від початку дня: ${resultObject.secondsPassed}\nКількість секунд до наступного дня: ${resultObject.secondsUntilNextDay}`;
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Демонстрація методів jQuery</title>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+
+<script>
+  $(document).ready(function(){
+    // $.extend() - злиття об'єктів
+    var обєкт1 = { "ключ1": "значення1" };
+    var обєкт2 = { "ключ2": "значення2" };
+
+    var обєднанийОбєкт = $.extend({}, обєкт1, обєкт2);
+    alert("Злиття об'єктів: " + JSON.stringify(обєднанийОбєкт));
+
+    // $.parseHTML() - розбір рядка HTML та створення DOM-вузлів
+    var htmlРядок = "<div><p>Текст абзацу</p></div>";
+    var створеніВузли = $.parseHTML(htmlРядок);
+    alert("DOM-вузли з рядка HTML: " + створеніВузли);
+
+    // Ваш код може додавати інші методи зі списку, який ви вибрали
+  });
+</script>
+
+</body>
+</html>
+

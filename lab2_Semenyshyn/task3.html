@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+let str, stb;
+function fun() {
+    str = parseInt(main_form.t_str.value);
+    stb = parseInt(main_form.t_stb.value);
+    let res_str = "<table border='1'>\n"; // Додано межі для наочності
+    for (let i = 1; i <= str; i++) {
+        res_str += "<tr>\n";
+        for (let j = 1; j <= stb; j++) {
+            let Aij = 2 * j + i;  // Оновлений вираз
+            res_str += "<td>";
+            res_str += "<input type='text' id='_" + i + "_" + j + "' value='" + Aij + "'>";
+            res_str += "</td>\n";
+        }
+        res_str += "</tr>\n";
+    }
+    res_str += "</table>";
+    main_div.innerHTML = res_str;
+}
+
+function fun_build() {
+    let str_report = "";
+
+    if (str >= 5 && stb >= 5) {
+        let sumRows = [];
+        let sumSecondRow = 0;
+        let sumThirdColumn = 0;
+        let sumMatchingElements = 0;
+        let productLastColumn = 1;
+
+        for (let i = 1; i <= str; i++) {
+            let sum = 0;
+            for (let j = 1; j <= stb; j++) {
+                let value = parseInt(main_form["_" + i + "_" + j].value);
+                sum += value;
+
+                if (i === 2) {
+                    sumSecondRow += value;
+                }
+
+                if (j === 3) {
+                    sumThirdColumn += value;
+                }
+
+                if (i === j) {
+                    sumMatchingElements += value;
+                }
+
+                if (j === stb) {
+                    productLastColumn *= value;
+                }
+            }
+            sumRows.push(sum);
+        }
+
+        for (let i = 0; i < str; i++) {
+            str_report += "Сума " + (i + 1) + " строки = " + sumRows[i] + ";\n";
+        }
+        str_report += "Сума другого рядка = " + sumSecondRow + ";\n";
+        str_report += "Сума третього стовпця = " + sumThirdColumn + ";\n";
+        str_report += "Сума елементів, де i = j = " + sumMatchingElements + ";\n";
+        str_report += "Добуток елементів останнього стовпця = " + productLastColumn + ";\n";
+
+        alert(str_report);
+    } else {
+        alert("Введіть значення для " + (str < 5 ? "кількості строк" : "кількості стовбців") + " більше або рівні 5.");
+    }
+}
+</script>
+</head>
+<body>
+<form id="main_form">
+    <table>
+        <tr>
+            <td>Кількість строк:</td>
+            <td><input type="text" id="t_str" value="5"></td>
+        </tr>
+        <tr>
+            <td>Кількість стовбців:</td>
+            <td><input type="text" id="t_stb" value="5"></td>
+        </tr>
+        <tr>
+            <td><input type="button" onClick="fun();" value="Побудувати матрицю"></td>
+        </tr>
+        <tr>
+            <td><input type="button" onClick="fun_build();" value="Розрахувати"></td>
+        </tr>
+    </table>
+    <div id="main_div"></div>
+</form>
+</body>
+</html>

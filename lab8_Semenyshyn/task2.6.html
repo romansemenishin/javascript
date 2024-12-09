@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<div>
+    <h3>Завдання 2.6. Формування тексту про час</h3>
+    <label for="inputDate">Введіть дату та час у форматі "дд.мм.рррр год:хв":</label>
+    <input type="text" id="inputDate" placeholder="дд.мм.рррр год:хв">
+    <button onclick="generateTimeText()">Генерувати текст</button>
+    <p id="timeText"></p>
+</div>
+
+<script>
+    // Функція для генерації тексту про час
+    function generateTimeText() {
+        const inputDate = document.getElementById('inputDate').value;
+        const inputDateTime = new Date(inputDate);
+
+        if (isNaN(inputDateTime.getTime())) {
+            document.getElementById('timeText').innerText = 'Введіть коректну дату та час.';
+            return;
+        }
+
+        const now = new Date();
+        const timeDifferenceInSeconds = Math.floor((now - inputDateTime) / 1000);
+
+        let resultText;
+
+        if (timeDifferenceInSeconds < 60) {
+            resultText = `${timeDifferenceInSeconds} сек. назад`;
+        } else if (timeDifferenceInSeconds < 3600) {
+            const minutes = Math.floor(timeDifferenceInSeconds / 60);
+            resultText = `${minutes} хв. назад`;
+        } else {
+            const options = { day: 'numeric', month: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric' };
+            resultText = inputDateTime.toLocaleDateString('uk-UA', options);
+        }
+
+        document.getElementById('timeText').innerText = resultText;
+    }
+</script>
+
+</body>
+</html>

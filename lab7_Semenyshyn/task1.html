@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+    <!-- Перший код -->
+    <script>
+        function reverseSequence() {
+            var inputSequence = document.getElementById("inputSequence").value;
+
+            var sequenceArray = inputSequence.split(',').map(Number);
+
+            var reversedArray = sequenceArray.reverse();
+
+            document.getElementById("result").innerHTML = "Обернена послідовність: " + reversedArray.join(', ');
+        }
+    </script>
+    <label for="inputSequence">1.1 Введіть послідовність чисел (через кому): </label>
+    <input type="text" id="inputSequence">
+    <button onclick="reverseSequence()">Обернути</button>
+    <p id="result"></p>
+
+    <!-- Другий код -->
+    <script>
+        function no_zeros(inputArray) {
+            var modifiedArray = inputArray.filter(function(value) {
+                return value !== 0;
+            });
+
+            document.getElementById("result").innerHTML = "Модифікований масив: " + modifiedArray.join(', ');
+        }
+    </script>
+    <label for="inputArray">1.2 Введіть масив чисел (через кому): </label>
+    <input type="text" id="inputArray">
+    <button onclick="no_zeros(inputArray.value.split(',').map(Number))">Видалити нулі</button>
+    <p id="result"></p>
+
+    <!-- Третій код -->
+    <script>
+        function reverser(inputString) {
+            var reversedString = inputString.split('').reverse().join('');
+
+            document.getElementById("result").innerHTML = "Результат: " + reversedString;
+        }
+    </script>
+    <label for="inputString">1.3 Введіть текстовий рядок: </label>
+    <input type="text" id="inputString">
+    <button onclick="reverser(inputString.value)">Відобразити у протилежному порядку</button>
+    <p id="result"></p>
+
+    <!-- Четвертий код -->
+    <script>
+        function replaceText() {
+           
+            var originalString = "Я не люблю морозиво";
+
+            document.getElementById("initialString").innerHTML = "Початковий рядок: " + originalString;
+            
+            var words = originalString.split(' ');
+            var modifiedStringA = words[0] + ' ' + words[2] + ' ' + words[1];
+
+            var modifiedStringB = originalString.replace(/ /g, ',');
+
+            document.getElementById("resultA").innerHTML = "a) " + modifiedStringA;
+            document.getElementById("resultB").innerHTML = "b) " + modifiedStringB;
+        }
+    </script>
+    <button onclick="replaceText()">1.4 Виконати заміни</button>
+    <p id="initialString"></p>
+    <p id="resultA"></p>
+    <p id="resultB"></p>
+
+</body>
+</html>

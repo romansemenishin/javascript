@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Калькулятор густини і площі континентів</title>
+    <script>
+        let continent = ["Євразія", "Африка", "Північна Америка", "Південна Америка", "Антарктида", "Австралія"];
+        let density = [144, 45, 22, 24, 0.0003, 3];
+        let area = [54000000, 30370000, 24709000, 17840000, 14000000, 7692024];
+
+        let selectedContinentIndex; 
+
+        function fun1() {
+            let input = document.getElementsByName("entry")[0].value;
+
+            selectedContinentIndex = continent.indexOf(input);
+
+            if (selectedContinentIndex !== -1) {
+                console.log(`Густина населення: ${density[selectedContinentIndex]} осіб/км², Площа: ${area[selectedContinentIndex]} км²`);
+            } else {
+                console.log("Континент не знайдений");
+            }
+        }
+
+        function fun2() {
+            if (selectedContinentIndex !== undefined) {
+                let population = density[selectedContinentIndex] * area[selectedContinentIndex];
+                console.log(`Населення континенту: ${population} осіб`);
+            } else {
+                console.log("Спочатку виберіть континент за допомогою кнопки 'Густина і площа'");
+            }
+        }
+    </script>
+</head>
+<body>
+    <form name="entryForm">
+        Введіть назву континенту:
+        <input type="text" name="entry">
+        <input type="button" value="Густина і площа" onclick="fun1()">
+        <input type="button" value="Населення" onclick="fun2()">
+        <br>
+        <input type="text" size="70" name="output">
+    </form>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<html>
+<head>
+<script>
+function fun(a)
+{
+main_form.t_res.value = a;
+}
+function fun1(a)
+{
+main_form.t_res2.value = a;
+}
+</script>
+</head>
+<body onLoad = "fun('Відбулось завантаження сторінки');">
+<form id = "main_form">
+<input type="text" size = "100" value="onClick" onClick="fun('Відбувся клік на текстовому елементі форми');"><br>
+<input type="text" size = "100" value="onSelect" onSelect = "fun('Зміст текстового поля форми змінений');"><br>
+<input type = "text" size = "100" id = "t_res" onMouseOver = "fun('Курсор потрапив на гіперпосилання');" onMouseOut = "fun('Курсор потрапив не на гіперпосилання');"><br>
+<p>onFocus </p>
+<input type="text" size="100" value="onFocus" onFocus="fun1('Текстовий елемент форми отримав фокус');" onSelect="fun('В текстовому полі форми виділений текст');"><br>
+<input type = "text" size = "100" id = "t_res2";><br></form>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="jquery-3.7.1.min.js"></script>
+</head>
+<body>
+<div class="example" id="cssExample">
+  <div id="cssContent">Приклад стилізації</div>
+  <button onclick="applyStyles()">Застосувати Стилі</button>
+</div>
+
+<script>
+  function applyStyles() {
+    $('#cssContent').css({
+      'color': 'red',
+      'font-size': '20px',
+      'background-color': 'lightblue'
+    });
+  }
+</script>
+</body>
+</html>

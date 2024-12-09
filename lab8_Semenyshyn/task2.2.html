@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<div>
+    <h3>Завдання 2.2. Виведення дня і номера тижня</h3>
+    <button onclick="displayDayInfo()">Виконати</button>
+    <p id="dayInfo"></p>
+</div>
+
+<script>
+    // Функція виведення дня і номера тижня для заданого об'єкта Date
+    function displayDayInfo() {
+        const currentDate = new Date();
+        const dayInfo = getDayInfo(currentDate);
+
+        document.getElementById('dayInfo').innerText = `Номер тижня: ${dayInfo.dayNumber} \nНазва дня тижня: ${dayInfo.dayName}`;
+    }
+
+    // Функція отримання інформації про день тижня для заданого об'єкта Date
+    function getDayInfo(date) {
+        const daysOfWeek = ['понеділок', 'вівторок', 'середа', 'четвер', 'пʼятниця', 'субота', 'неділя'];
+
+        return {
+            dayNumber: date.getDay() === 0 ? 7 : date.getDay(),
+            dayName: daysOfWeek[date.getDay() === 0 ? 6 : date.getDay() - 1]
+        };
+    }
+</script>
+
+</body>
+</html>

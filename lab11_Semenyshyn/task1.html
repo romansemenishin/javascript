@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="jquery-3.7.1.min.js"></script>
+</head>
+<body>
+
+<div id="content">
+  <div class="example" id="htmlExample">
+    <div id="htmlContent">Початковий вміст</div>
+    <button onclick="changeHTML()">Змінити Вміст</button>
+  </div>
+</div>
+
+<script>
+  function changeHTML() {
+    $('#htmlContent').html('<p>Новий вміст, доданий за допомогою методу .html()</p>');
+  }
+</script>
+
+</body>
+</html>
+
+

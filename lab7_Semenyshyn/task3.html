@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+  <label for="inputSnakeCase">3.1 Змінні в стилі Snake case (через кому):</label>
+  <input type="text" id="inputSnakeCase">
+  <button onclick="toCamelCase()">Перетворити</button>
+  <p>Вхідний масив: <span id="inputArray"></span></p>
+  <p>Вихідний масив: <span id="outputArray"></span></p>
+
+  <label for="inputCamelCase">3.2 Змінні в стилі Camel case (через кому):</label>
+  <input type="text" id="inputCamelCase">
+  <button onclick="toSnakeCase()">Перетворити</button>
+  <p>Вхідний масив: <span id="inputArraySnake"></span></p>
+  <p>Вихідний масив: <span id="outputArraySnake"></span></p>
+
+  <label for="textInput">3.3 Введіть текст для заміни дат:</label>
+  <textarea id="textInput" rows="4" cols="50"></textarea>
+  <button onclick="replaceDates()">Замінити дати</button>
+  <p>Результат заміни: <span id="resultText"></span></p>
+
+  <script>
+    function toCamelCase() {
+      const inputSnakeCase = document.getElementById('inputSnakeCase').value;
+      const inputArray = inputSnakeCase.split(',').map(word => word.trim());
+      const outputArray = inputArray.map(word =>
+        word.replace(/_([a-z])/g, (match, letter) => letter.toUpperCase())
+      );
+      document.getElementById('inputArray').innerText = `[${inputArray}]`;
+      document.getElementById('outputArray').innerText = `[${outputArray}]`;
+    }
+
+    function toSnakeCase() {
+      const inputCamelCase = document.getElementById('inputCamelCase').value;
+      const inputArraySnake = inputCamelCase.split(',').map(word => word.trim());
+      const outputArraySnake = inputArraySnake.map(word =>
+        word.replace(/[A-Z]/g, (match) => `_${match.toLowerCase()}`)
+      );
+      document.getElementById('inputArraySnake').innerText = `[${inputArraySnake}]`;
+      document.getElementById('outputArraySnake').innerText = `[${outputArraySnake}]`;
+    }
+
+    function replaceDates() {
+      const textInput = document.getElementById('textInput').value;
+      const resultText = textInput.replace(/(\d{4})\/(\d{2})\/(\d{2})/g, '$3.$2.$1');
+      document.getElementById('resultText').innerText = resultText;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    #hide_text {
+      width: 200px;
+      height: 100px;
+      background-color: lightgray;
+      border: 1px solid gray;
+      padding: 10px;
+      display: none;
+    }
+
+    #hide_text.clicked {
+      border: 2px solid darkgreen;
+      background-color: lightgreen;
+    }
+
+    #hide_text.double-clicked {
+      border: 1px solid gray;
+      background-color: lightgray;
+    }
+
+    #hide_text:hover {
+      background-color: lightblue;
+      border-color: darkblue;
+    }
+  </style>
+  <script type="text/javascript" src="jquery-3.7.1.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $("p#firstParagraph").text("DOM first!");
+      $("p#lastParagraph").text("DOM last!");
+
+      var $text = $('#hide_text');
+      $text.hide();
+
+      $('.button').click(function() {
+        $text.show(200);
+      });
+
+      $('#hide_text').click(function() {
+        $(this).addClass('clicked');
+        alert('Одинарний клік');
+      }).dblclick(function() {
+        $(this).removeClass('clicked').addClass('double-clicked');
+        setTimeout(function() {
+          $text.removeClass('double-clicked');
+        }, 500);
+        alert('Подвійний клік');
+      });
+    });
+  </script>
+</head>
+<body>
+  <h1>Контент сторінки</h1>
+  <p id="firstParagraph"></p>
+  <p id="lastParagraph"></p>
+  <a href="#" class="button">Натисніть, щоб показати текст</a>
+
+  <div id="hide_text" class="hoverable">Демонстраційний прихований текст</div>
+
+  <button id="singleClickButton">Одинарний клік</button>
+  <button id="doubleClickButton">Подвійний клік</button>
+
+  <script>
+    $('#singleClickButton').click(function() {
+      alert('Одинарний клік');
+    });
+
+    $('#doubleClickButton').dblclick(function() {
+      alert('Подвійний клік');
+    });
+  </script>
+</body>
+</html>
